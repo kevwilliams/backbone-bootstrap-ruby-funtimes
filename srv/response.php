@@ -9,7 +9,9 @@ $json =<<<EOT
 {"name":"Brandoe Beanie","image":"http://a1.zassets.com/images/z/2/7/2/9/2/4/2729241-p-LARGE_SEARCH.jpg","brandName":"Emerica","price":"$16.00"},
 {"name":"Half Dome Snapback","image":"http://a9.zassets.com/images/z/2/7/3/1/6/2/2731626-p-LARGE_SEARCH.jpg","brandName":"etnies","price":"$28.00"},
 {"name":"Shadow Cap","image":"http://a2.zassets.com/images/z/2/7/6/3/3/3/2763333-p-LARGE_SEARCH.jpg","brandName":"Under Armour","price":"$21.99"},
-{"name":"Glow Slouch Hat","image":"http://a2.zassets.com/images/z/2/9/2/6/6/8/2926686-p-LARGE_SEARCH.jpg","brandName":"BCBGeneration","price":"$32.00"},
+{"name":"Glow Slouch Hat","image":"http://a2.zassets.com/images/z/2/9/2/6/6/8/2926686-p-LARGE_SEARCH.jpg","brandName":"BCBGeneration","price":"$32.00"}]
+EOT;
+/* too many hats! 
 {"name":"Glow Slouch Hat","image":"http://a9.zassets.com/images/z/2/9/2/6/6/8/2926685-p-LARGE_SEARCH.jpg","brandName":"BCBGeneration","price":"$32.00"},
 {"name":"Glow Slouch Hat","image":"http://a1.zassets.com/images/z/2/9/2/6/6/8/2926684-p-LARGE_SEARCH.jpg","brandName":"BCBGeneration","price":"$32.00"},
 {"name":"Rock Star Bow Beanie Hat","image":"http://a3.zassets.com/images/z/2/9/6/5/6/4/2965647-p-LARGE_SEARCH.jpg","brandName":"Betsey Johnson","price":"$24.00"},
@@ -20,7 +22,7 @@ $json =<<<EOT
 {"name":"Powder Princess™ Hat (Big Kids)","image":"http://a2.zassets.com/images/z/2/7/4/2/3/7/2742375-p-LARGE_SEARCH.jpg","brandName":"Columbia Kids","price":"$25.00"},
 {"name":"Length Beanie","image":"http://a3.zassets.com/images/z/2/7/7/8/7/6/2778761-p-LARGE_SEARCH.jpg","brandName":"Fox","price":"$28.50"},
 {"name":"Formality Beanie","image":"http://a1.zassets.com/images/z/2/7/7/8/7/5/2778756-p-LARGE_SEARCH.jpg","brandName":"Fox","price":"$29.50"}]
-EOT;
+*/
 /* "belts":[{"name":"Printed Elk Gold Medusa Buckle Belt","image":"http://a1.zassets.com/images/z/2/4/3/3/9/7/2433971-p-LARGE_SEARCH.jpg","brandName":"Versace Collection","price":"$250.00"},
 {"name":"Soave Calf Belt","image":"http://a1.zassets.com/images/z/2/7/7/6/1/7/2776175-p-LARGE_SEARCH.jpg","brandName":"Versace Collection","price":"$245.00"},
 {"name":"Soave Calf Belt","image":"http://a1.zassets.com/images/z/2/7/7/6/1/7/2776177-p-LARGE_SEARCH.jpg","brandName":"Versace Collection","price":"$245.00"},

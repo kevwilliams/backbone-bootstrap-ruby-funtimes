@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Dress yoself before you reck yoself!</a>
+              <a class="navbar-brand" href="#">WOW! Look it's Kevvoes!</a>
             </div>
             <div class="navbar-collapse collapse">
               <form class="navbar-form navbar-right" role="form">
@@ -52,15 +52,15 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
           <div class="container">
-            <p>This started out as a challenge from my wife to create something funny in Java in 90 minutes for Zappos. I was preparing for Defcon and thought of this idea. I had heaps of fun with it, and will probably tinker on it from time to time. </p>
+            <p>This started out as a challenge from my wife to create something funny in Java in 90 minutes for Zappos. I was preparing for Defcon and thought of the <a href="https://github.com/kevwilliams/defcon-by-zappos" target="_blank">original app</a>. I had so much fun with that, I decided to use this example again when I found out about Backbone. </p>
           </div>
         </div>
 
         <div class="container">
 
           <div class="row">
-            <div class="col-md-4"
->              <div class="panel panel-default">
+            <div class="col-md-4">
+              <div class="panel panel-default">
                 <div class="panel-body">
                   <form class="form" name="myForm">
                   <div class="form-group">
@@ -93,24 +93,39 @@
                   <h3>Total Price $0.00</h3>
                   <button class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download"></span>&nbsp;Download Image</button>
                 </div>
+
               </div>
-              <div class="col-sm-2" style="">
+              <div class="col-sm-2">
                 <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;margin-top:2px;">Pants</div>
                 <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;margin-top:2px;">Shoes</div>
               </div>
-              <div class="col-sm-12 top-space" style="">
+              <div class="col-sm-12 top-space">
                 <div class="col-sm-2 col-sm-offset-3" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;margin-top:2px;">Hand 1</div>
                 <div class="col-sm-2 col-sm-offset-1" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;margin-top:2px;">Hand 2</div>
+              </div>
+              <div class="col-sm-12 top-space">
+                <div class="alert alert-info">
+                  <h3>Kevvos? Seriously? What the %$&^ is this supposed to be?</h3>
+                  <p>Well... its a rudimentary outfit generator where you can choose which "slots" to put items in.</p>
+                  <p>The products are contained in a JSON object that is created by scraping the links off a few zappos.com pages using Ruby and Mechanize.</p> 
+                  <p>When the page loads Backbone does a quick AJAX request to get the Hats and fills the view and calls Render which displays the products in the list</p>
+                  <p>The user can click a product and that item will be selected into the appropriate "Slot" and the price will increment.</p>
+                  <p>After designing your outfit you hit Download Image and receive an image with the pictures in the appropriate spots, with my face. (Not yet working)</p>
+                  <p>There are a few things I noticed putting it live so if its not working, try again later. I will probably be working on this for fun over the next couple weeks anyway</p>
+                  <br/>
+                  <span class="glyphicon glyphicon-cog"></span>&nbsp; Check out <a href="https://github.com/kevwilliams/backbone-bootstrap-ruby-funtimes">the Github</a> for the source. 
+                </div>
               </div>
             </div>
 
           </div>
           <div class="col-md-12"><hr/></div>
+
           <div class="row top-space">
             <div class="col-md-4">
               <div class="row text-center"><img src="img/backbone_logo.png" width="100"/></div>
               <h2>Backbone</h2>
-              <p>I read something out about Backbone on the Zappos Insider Technology page, and immediately went to work figuring it out. Its quite an impressive library and the learning curve is nice and easy while giving lots of great functionality. I've been tweaking in Angular and Node for awhile now which might have made understanding it a bit easier. I also found the syntax of this library similar to Prototype, which I am very comfortable in. Something I will certainly continue to use, so lightweight and powerful [Value #8 <span class="glyphicon glyphicon-thumbs-up"></span>].</p>
+              <p>I read something out about Backbone on the Zappos Insider Technology page, and said hmm well that looks cool.. so I went to work breaking it. Its quite an impressive library and the learning curve is nice and easy while giving lots of great functionality. I've been tweaking in Angular and Node for awhile now which might have made understanding it a bit easier. I also found the syntax of this library similar to Prototype, which I am very comfortable in. Something I will certainly continue to use, so lightweight and powerful. <i title="Do more with less!" class="label label-sm label-success">Value #8 <span class="glyphicon glyphicon-thumbs-up"></span></i></p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
             <div class="col-md-4">
