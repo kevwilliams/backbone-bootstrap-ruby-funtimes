@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">This</a>
+              <a class="navbar-brand" href="#">Dress yoself before you reck yoself!</a>
             </div>
             <div class="navbar-collapse collapse">
               <form class="navbar-form navbar-right" role="form">
@@ -59,17 +59,39 @@
         <div class="container">
 
           <div class="row">
-            <div class="col-md-3">
-              <div id="response" class="response"></div>
+            <div class="col-md-4"
+>              <div class="panel panel-default">
+                <div class="panel-body">
+                  <form class="form" name="myForm">
+                  <div class="form-group">
+                    <label for="slotSelector" class="control-label">Choose a slot:</label>
+                    <select class="form-control" id="slotSelect">
+                      <option value="hats">Hats</option>
+                      <option value="belts">Belts</option>
+                      <option value="shirts">Shirts</option>
+                      <option value="pants">Pants</option>
+                      <option value="shoes">Shoes</option>
+                      <option value="shoes">Gloves</option>
+                    </select>
+                  </div>
+                  <button type="button" id="get" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span>&nbsp; Get Products</a>
+                  </form>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                  <div id="response" class="response"></div>
+              </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-8">
               <div class="col-sm-2" style="">
                 <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;">Hat</div>
                 <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;margin-top:2px;">Shirt</div>
               </div>
               <div class="col-sm-7">
-                <div class="col-sm-12"  style="background-color:#eee;height:300px;">
+                <div class="col-sm-12 text-center" id="outputDiv" style="background-color:#eee;height:200px;">
+                  <h3>Total Price $0.00</h3>
+                  <button class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download"></span>&nbsp;Download Image</button>
                 </div>
               </div>
               <div class="col-sm-2" style="">
@@ -88,7 +110,7 @@
             <div class="col-md-4">
               <div class="row text-center"><img src="img/backbone_logo.png" width="100"/></div>
               <h2>Backbone</h2>
-              <p>I read something out about Backbone on the Zappos Insider Technology page, and immediately went to work figuring out how the Collections work. Its quite an impressive library and the learning curve is nice and easy while giving lots of great functionality. I've been tweaking in Angular and Node for awhile now which might have made understanding it a bit easier, I also found the syntax of this library similar to Prototype, which I am very comfortable in. Something I will continue to use for sure.</p>
+              <p>I read something out about Backbone on the Zappos Insider Technology page, and immediately went to work figuring it out. Its quite an impressive library and the learning curve is nice and easy while giving lots of great functionality. I've been tweaking in Angular and Node for awhile now which might have made understanding it a bit easier. I also found the syntax of this library similar to Prototype, which I am very comfortable in. Something I will certainly continue to use, so lightweight and powerful [Value #8 <span class="glyphicon glyphicon-thumbs-up"></span>].</p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
             <div class="col-md-4">
@@ -100,18 +122,27 @@
             <div class="col-md-4">
               <div class="row text-center"><img src="img/ruby_logo.png" width="100"/></div>
               <h2>Ruby</h2>
-              <p>Initially I wrote this in Python, but saw that you guys like Ruby so went back and relearned some Ruby and wrote the web scraper for this project in Ruby.</p>
+              <p>Initially I wanted to write this in Python, but saw that you guys like Ruby so went back and refamiliarized myself with Ruby, and wrote the simple scraper for this project in that. I actually forgot how much I love writing Ruby and look forward to writing more. The syntax is very natural feeling and I love the anonymous Blocks ability.</p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
           </div>
 
           <hr>
 
+ <script type="text/template" id="sports-template">
+      <ul>
+        <% _.each(sports, function(sport){ %>
+        <li>
+          <%= sport.getDescription() %>
+        </li>
+        <% }); %>
+      </ul>
+    </script>
+
           <footer>
              <a href="https://www.twitter.com/kaydubbleu">@kaydubbleu</a> 2014</p>
           </footer>
         </div> <!-- /container --> 
-
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
@@ -120,96 +151,7 @@
         <script src="js/main.js"></script>
 
         <script src="js/vendor/underscore.js"></script>
-        <script src="js/vendor/backbone.1.1.2.js"></script>
-
-
-        <script type="text/template" id="slot_select">
-          <select id="slot-selector">
-            <% _(products).each(function(p) { %>
-              <option value="<%= p.get('name') %>"><%= p.get('name') %></option>
-            <% }); %>
-          </select>
-        </script>
-        
-        <div id="rate-editor-container"></div>
-
-
-        <script>  
-
-
-        var Game = Backbone.Model.extend({
-          url: 'srv/response.php',
-          initialize: function() {
-            console.log('oh hi!');
-          },
-
-          defaults: {
-            name: 'My Title',
-            releaseDate: 2008,
-          }
-        });
-
-        var GamesCollection = Backbone.Collection.extend({
-          model : Game,
-          url : 'srv/response.php',
-          parse: function(data)
-          {
-            $(data.hats).each(function(key, obj) {
-              // console.log(obj);
-            });
-          },
-          old : function() {
-            return this.filter(function(game) {
-              return game.get('releaseDate') < 2009;
-            });
-          }
-        });
-
-        var GameView = Backbone.View.extend({
-          tagName : "option",
-          className : 'response',
-          el: $('rate-editor-container'),
-
-          initialize : function () {
-            this.products = new GamesCollection(null, {view:this});
-            console.log('rere');
-            this.render();
-          },
-
-          render : function() {
-            var slot_select_template = 
-              _.template($("#slot_select").html(), {
-                products : this.products.toJSON(),
-                labelValue: 'Something'
-              });
-              $('#rate-editor-container').html(slot_select_template);
-            // this.$el.html( this.tpl(this.model.toJSON()) );
-          }
-        });
-
-
-
-        // games.fetch({reset: true });
-
-        var v = new GameView({});
-
-        // games.on('reset', function() 
-        // {
-        //   games.each(function(x){
-        //     $('#response').append(v.$el);
-        //   });
-        // });
-        </script>
-
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-        //   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        //     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        //   e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        //   e.src='//www.google-analytics.com/analytics.js';
-        //   r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        //   ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+        <script src="js/vendor/backbone.1.1.2.js"></script>    
+        <script src="js/app.js"></script>
       </body>
       </html>
