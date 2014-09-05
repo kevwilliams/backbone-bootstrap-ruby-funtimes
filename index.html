@@ -11,11 +11,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <style>
-    body {
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
-    .top-space {margin-top:25px;}
+    body { padding-top: 50px;padding-bottom: 20px; }
+    tr :hover{ cursor:pointer; }
+    .top-space { margin-top:25px; }
+    .strong {font-weight:bold;}
   </style>
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="css/main.css">
@@ -52,7 +51,13 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
           <div class="container">
+            <div class="pull-left col-md-3">
+              <img src="img/kev.png" />
+            </div>
+            <div class="col-md-9">
+            <h3>Welcome to Kevvoes!</h3>
             <p>This started out as a challenge from my wife to create something funny in Java in 90 minutes for Zappos. I was preparing for Defcon and thought of the <a href="https://github.com/kevwilliams/defcon-by-zappos" target="_blank">original app</a>. I had so much fun with that, I decided to use this example again when I found out about Backbone. </p>
+            </div>
           </div>
         </div>
 
@@ -74,7 +79,7 @@
                       <option value="shoes">Gloves</option>
                     </select>
                   </div>
-                  <button type="button" id="get" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span>&nbsp; Get Products</a>
+                  <button type="button" id="getButton" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span>&nbsp; Get Products</button>
                   </form>
                 </div>
               </div>
@@ -85,12 +90,17 @@
 
             <div class="col-md-8">
               <div class="col-sm-2" style="">
-                <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;">Hat</div>
+                <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:30px 10px;">
+                  <span id="slot_label_hat">Hat</span>
+                  <div class="hidden">
+                    <a href="" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></a>
+                  </div>
+                </div>
                 <div class="col-sm-12" style="background-color:#ccc;height:100px;text-align:center;padding:40px 10px;margin-top:2px;">Shirt</div>
               </div>
               <div class="col-sm-7">
                 <div class="col-sm-12 text-center" id="outputDiv" style="background-color:#eee;height:200px;">
-                  <h3>Total Price $0.00</h3>
+                  <h3>Total Price: $<span id="totalPrice">0.00</span></h3>
                   <button class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download"></span>&nbsp;Download Image</button>
                 </div>
 
@@ -105,13 +115,14 @@
               </div>
               <div class="col-sm-12 top-space">
                 <div class="alert alert-info">
-                  <h3>Kevvos? Seriously? What the %$&^ is this supposed to be?</h3>
-                  <p>Well... its a rudimentary outfit generator where you can choose which "slots" to put items in.</p>
+                  <h3>Q. Kevvos? Seriously? What the %$&^ is this supposed to be?</h3>
+                  <p>A. Well... its a rudimentary outfit generator where you can choose which "slots" to put items in. After designing your outfit you hit Download Image and receive an image with the pictures in the appropriate spots, and of course my face.</p>
+                  <p><strong>Uhh.. okay mate.. thats uhh kinda cool I guess.. Hows it work?</strong></p>
                   <p>The products are contained in a JSON object that is created by scraping the links off a few zappos.com pages using Ruby and Mechanize.</p> 
                   <p>When the page loads Backbone does a quick AJAX request to get the Hats and fills the view and calls Render which displays the products in the list</p>
                   <p>The user can click a product and that item will be selected into the appropriate "Slot" and the price will increment.</p>
-                  <p>After designing your outfit you hit Download Image and receive an image with the pictures in the appropriate spots, with my face. (Not yet working)</p>
-                  <p>There are a few things I noticed putting it live so if its not working, try again later. I will probably be working on this for fun over the next couple weeks anyway</p>
+                  <p> (Not yet working)</p>
+                  <p>There are a few things I noticed putting it live so if its not working, try again later. I will probably be working on this for fun over the next couple days anyway, at least until its fully functional. </p>
                   <br/>
                   <span class="glyphicon glyphicon-cog"></span>&nbsp; Check out <a href="https://github.com/kevwilliams/backbone-bootstrap-ruby-funtimes">the Github</a> for the source. 
                 </div>
@@ -143,17 +154,6 @@
           </div>
 
           <hr>
-
- <script type="text/template" id="sports-template">
-      <ul>
-        <% _.each(sports, function(sport){ %>
-        <li>
-          <%= sport.getDescription() %>
-        </li>
-        <% }); %>
-      </ul>
-    </script>
-
           <footer>
              <a href="https://www.twitter.com/kaydubbleu">@kaydubbleu</a> 2014</p>
           </footer>

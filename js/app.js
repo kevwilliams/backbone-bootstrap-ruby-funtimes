@@ -1,5 +1,9 @@
 $(function(){ //- start after page loads
 
+  Backbone.pubSub = _.extend({}, Backbone.Events); //- This is the global event listener to fire the UpdateEvents when a product is added
+                                                   //- idea was taken from: http://stackoverflow.com/questions/9984859/backbone-js-can-one-view-trigger-updates-in-other-views
+
+
   //The model that will be used for every item inside the collection
   //(Backbone will map every item into this model)
   var ProductItemModel = Backbone.Model.extend({
@@ -14,35 +18,39 @@ $(function(){ //- start after page loads
   var ProductItemView = Backbone.View.extend({
     tagName   : 'tr',
     template   : null,
-    events     : {
+
+    events : {
+      'click .product' : "addToOutfit"
     },
-    
     initialize : function(){
-      _.bindAll(this, 'render');
-      this.template = _.template('<td><img src="<%= image %>" height="50"/><strong><%= brandName %></strong><br/><%= name %></td><td><%= price %></td>');
+      _.bindAll(this, 'render','addToOutfit');
+      this.template = _.template('<td class="product"><img align="left" src="<%= image %>" height="50"/><strong><%= brandName %></strong><br/><%= name %></td><td>$<%= price %></td>');
     },
+
     render : function(){
       $(this.el).html( this.template( this.model.toJSON() ) );
       return this;
+    },
+
+    addToOutfit : function() {
+      Backbone.pubSub.trigger('addToOutfit', this);
+      $(this.el).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100);
     }
   });
 
   //- Assign the data source and which objects to create
   var ProductCollection = Backbone.Collection.extend({
     model: ProductItemModel,
-    url: 'srv/response.php'
+    url: 'srv/response.php',
+
   });
 
   //- Get the data and create the items
   var ProductsView = Backbone.View.extend({
     id         : "real-world-id",
-    //because it is a list we define the tag as ul 
     tagName     : "table", 
     className     : "real-world table table-condensed table-hover", 
 
-    events : {
-    },
-    
     initialize : function(){
       _.bindAll(this, 'load', 'addItemHandler','loadCompleteHandler','errorHandler','render');
       this.collection.bind('add', this.addItemHandler);
@@ -55,7 +63,6 @@ $(function(){ //- start after page loads
         success: this.loadCompleteHandler,
         error: this.errorHandler
       });
-
     },  
 
     //- Factory method, spew out some models for each json object
@@ -81,9 +88,34 @@ $(function(){ //- start after page loads
     }
   });
 
-  var myCollection = new ProductCollection();
+  //- View to track what is in each slot and the total price.
+  var CartView = Backbone.View.extend({
+    price : 0.00,
+    priceEl : '#totalPrice',
 
-  // pass the collection to our testing View (I was missing this for ages!)
+    initialize : function() 
+    {
+      _.bindAll(this, 'addGarment','render');
+      Backbone.pubSub.on('addToOutfit', this.addGarment, this);
+    },
+
+    addGarment : function(g) 
+    {
+      this.price = parseInt(this.price) + parseInt(g.model.get('price'));
+      this.render();
+    },
+
+    render : function() {
+      $(this.priceEl).html(this.price);
+    }
+
+  });
+
+  //- Get the products
+  var myCollection = new ProductCollection();
+  var c = new CartView();
+
+  // pass them to to our View (I was missing this for ages!)
   var productsList = new ProductsView({collection: myCollection});
   productsList.load(); //- load the list.
 });
